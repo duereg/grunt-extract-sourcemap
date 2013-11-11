@@ -1,6 +1,6 @@
 # grunt-external-sourcemap
 
-> Strips sourcemaps from a js file and links the original file to a newly created external source map
+> Extracts sourcemaps from a js file and links the original file to an external source map file
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -35,11 +35,25 @@ grunt.initConfig({
 ### Usage Examples
 
 #### Default Options
-Given a set of files with inline source maps, the source maps are stripped out into their own files and the original `.js` files are updated to point at the newly created, separate source map file.
+Given a set of files with inline source maps, the source maps are extracted into their own files and the original `.js` files are updated to point at the new external source map file.
 
 ```js
 grunt.initConfig({
   external_sourcemap: {
+    files: {
+      'public/build': ['src/build/output1.js', 'src/build/output2.js'],
+    },
+  },
+})
+```
+
+#### Custom Options
+You set a flag, `removeSourcesContent`, which will remove the sourcesContent field from the extracted source map.
+
+```js
+grunt.initConfig({
+  external_sourcemap: {
+    options: { 'removeSourcesContent': true }
     files: {
       'public/build': ['src/build/output1.js', 'src/build/output2.js'],
     },

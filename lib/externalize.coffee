@@ -10,7 +10,7 @@ translateSources = (sources, grunt) ->
 
   newSources
 
-module.exports = ({filepath, source, grunt, dest}) ->
+module.exports = ({filepath, source, grunt, dest, options}) ->
   mapFilepath = "#{filepath}.map"
   mapFilename = path.basename mapFilepath
   sourceFilename = path.basename filepath
@@ -26,6 +26,7 @@ module.exports = ({filepath, source, grunt, dest}) ->
   data = JSON.parse(data)
   data.file = sourceFilename
   data.sources = translateSources(data.sources, grunt)
+  delete data.sourcesContent if options?.removeSourcesContent
   data = JSON.stringify data, null, 4
 
   source = source.replace /\/\/@ sourceMappingURL=data:application\/json;base64,(.*)\n/, "//@ sourceMappingURL=#{mapFilename}\n"

@@ -37,16 +37,22 @@ module.exports = (grunt) ->
     # Configuration to be run (and then tested).
     external_sourcemap: {
       default_options: {
-        options: { },
+        options: { }
         files: {
-          'test/expected': ['test/fixtures/external_sourcemap.js']
-        },
+          'test/expected/default_options': ['test/fixtures/external_sourcemap.js']
+        }
       },
       cwd_options: {
         options: {}
         cwd: 'test/fixtures'
         src: 'external_sourcemap.js'
-        dest: 'test/expected'
+        dest: 'test/expected/cwd_options'
+      },
+      strip_source: {
+        options: { removeSourcesContent: true }
+        files: {
+          'test/expected/strip_source': ['test/fixtures/external_sourcemap.js']
+        }
       }
     },
 

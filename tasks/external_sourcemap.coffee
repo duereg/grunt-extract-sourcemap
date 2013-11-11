@@ -36,4 +36,4 @@ module.exports = (grunt) ->
 
     for {source, filepath, dest} in sources
       grunt.log.writeln "externalizing #{filepath} with source length #{source.length}"
-      externalize {source, filepath, grunt, dest}
+      externalize {source, filepath, grunt, dest, options: @options()}

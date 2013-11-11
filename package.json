@@ -1,7 +1,7 @@
 {
   "name": "grunt-external-sourcemap",
   "description": "Strips sourcemaps from a js file and links the original file to a newly created external source map",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Matt Blair",
     "email": "matt@goodeggs.com"

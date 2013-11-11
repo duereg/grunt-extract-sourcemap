@@ -2,7 +2,7 @@
 #  * grunt-external-sourcemap
 #  * https://github.com/goodeggs/grunt-external-sourcemap
 #  *
-#  * Copyright (c) 2013 Matt Blair
+#  * Copyright (c) 2013 Good Eggs
 #  * Licensed under the MIT license.
 #  */
 

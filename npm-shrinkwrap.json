@@ -1,6 +1,6 @@
 {
   "name": "grunt-external-sourcemap",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "dependencies": {
     "coffee-script": {
       "version": "1.6.3",

@@ -41,6 +41,12 @@ module.exports = (grunt) ->
         files: {
           'test/expected': ['test/fixtures/external_sourcemap.js']
         },
+      },
+      cwd_options: {
+        options: {}
+        cwd: 'test/fixtures'
+        src: 'external_sourcemap.js'
+        dest: 'test/expected'
       }
     },
 

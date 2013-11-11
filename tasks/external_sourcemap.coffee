@@ -7,6 +7,10 @@ externalize = require '../lib/externalize'
 Lazy = require 'lazy.js/lazy'
 path = require "path"
 
+findFilepath = (target, cwd, file) ->
+  dirPath = target.cwd or cwd
+  filepath = path.resolve(dirPath, file)
+
 module.exports = (grunt) ->
   grunt.registerMultiTask 'external_sourcemap', 'Strips sourcemaps from a js file and links the original file to a newly created external source map', ->
     cwd = grunt.config('cwd') or ""
@@ -16,14 +20,14 @@ module.exports = (grunt) ->
       if target.src?
         convertedArray = Lazy(target.src)
           .filter (file) ->
-            filepath = path.relative(cwd, file)
+            filepath = findFilepath target, cwd, file
             exists = grunt.file.exists(filepath)
             # Warn on and remove invalid source files
             grunt.log.writeln "Does file #{filepath} exist? #{exists}" unless exists
             exists
           .map (file) ->
+            filepath = findFilepath target, cwd, file
             # Read file source.
-            filepath = path.relative(cwd, file)
             source = grunt.file.read(filepath)
             {source, filepath, dest: target.dest}
           .toArray()

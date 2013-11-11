@@ -2,11 +2,10 @@
 path = require "path"
 
 translateSources = (sources, grunt) ->
-  cwd = grunt.config('cwd') or ""
   newSources = []
 
   for sourcePath in sources
-    sourcePath = path.relative(cwd, sourcePath)
+    sourcePath = path.relative("", sourcePath)
     newSources.push sourcePath
 
   newSources
@@ -20,10 +19,10 @@ module.exports = ({filepath, source, grunt, dest}) ->
 
   match = source.match /\/\/@ sourceMappingURL=data:application\/json;base64,(.*)\n/
   grunt.log.writeln "found sourcemap in #{filepath}: #{match?}" unless match?
-  return unless match?
+  return false unless match?
 
   data64 = match[1]
-  data = new Buffer(data64, "base64").toString("ascii")
+  data = new Buffer(data64, "base64").toString()
   data = JSON.parse(data)
   data.file = sourceFilename
   data.sources = translateSources(data.sources, grunt)
@@ -35,3 +34,4 @@ module.exports = ({filepath, source, grunt, dest}) ->
   grunt.file.write mapOutput, data
 
   grunt.log.writeln "re-wrote data-url sourcemap in #{filepath} to #{sourceOutput} and #{mapOutput}"
+  true

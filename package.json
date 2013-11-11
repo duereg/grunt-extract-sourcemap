@@ -1,0 +1,47 @@
+{
+  "name": "grunt-external-sourcemap",
+  "description": "Strips sourcemaps from a js file and links the original file to a newly created external source map",
+  "version": "0.1.0",
+  "author": {
+    "name": "Matt Blair",
+    "email": "matt@goodeggs.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/goodeggs/grunt-external-sourcemap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/goodeggs/grunt-external-sourcemap/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/goodeggs/grunt-external-sourcemap/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "coffee-script": "*",
+    "lazy.js": "*"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "load-grunt-tasks": "~0.2.0",
+    "should": "~2.0.2",
+    "grunt-shell": "~0.5.0"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}

@@ -7,33 +7,47 @@ externalize = require '../lib/externalize'
 Lazy = require 'lazy.js/lazy'
 path = require "path"
 
-findFilepath = (target, cwd, file) ->
-  dirPath = target.cwd or cwd
-  filepath = path.resolve(dirPath, file)
+getSourceDirectory = (target, cwd) ->
+  target.cwd or cwd
+
+getFilepath = (target, cwd, file) ->
+  sourceDirectory = getSourceDirectory target, cwd
+  filepath = path.resolve sourceDirectory, file
+  filepath
+
+getRelativeDirectory = (target, cwd, filepath) ->
+  relativeDirectory = ''
+  sourceDirectory = getSourceDirectory target, cwd
+
+  unless sourceDirectory is ''
+    targetDirectory = path.dirname filepath
+    relativeDirectory = path.relative sourceDirectory, targetDirectory
+
+  relativeDirectory
 
 module.exports = (grunt) ->
   grunt.registerMultiTask 'external_sourcemap', 'Strips sourcemaps from a js file and links the original file to a newly created external source map', ->
-    cwd = grunt.config('cwd') or ""
+    cwd = grunt.config('cwd') or ''
+    options = @options()
     sources = []
 
     for target in @files
       if target.src?
         convertedArray = Lazy(target.src)
           .filter (file) ->
-            filepath = findFilepath target, cwd, file
+            filepath = getFilepath target, cwd, file
             exists = grunt.file.exists(filepath)
             # Warn on and remove invalid source files
             grunt.log.writeln "Does file #{filepath} exist? #{exists}" unless exists
             exists
           .map (file) ->
-            filepath = findFilepath target, cwd, file
+            filepath = getFilepath target, cwd, file
+            relativeDirectory = getRelativeDirectory target, cwd, filepath
             # Read file source.
             source = grunt.file.read(filepath)
-            {source, filepath, dest: target.dest}
+            {source, filepath, dest: target.dest, relativeDirectory, grunt, options}
           .toArray()
 
         sources = sources.concat(convertedArray)
 
-    for {source, filepath, dest} in sources
-      grunt.log.writeln "externalizing #{filepath} with source length #{source.length}"
-      externalize {source, filepath, grunt, dest, options: @options()}
+    externalize sourceConfig for sourceConfig in sources

@@ -34,6 +34,12 @@ module.exports = (grunt) ->
           '-o test/fixtures/external_sourcemap.js'
         ].join ' '
 
+      mkdirNested:
+        command: 'mkdir test/fixtures/nested'
+
+      copyJsToNested:
+        command: 'cp test/fixtures/external_sourcemap.js test/fixtures/nested'
+
     # Configuration to be run (and then tested).
     external_sourcemap: {
       default_options: {
@@ -53,6 +59,12 @@ module.exports = (grunt) ->
         files: {
           'test/expected/strip_source': ['test/fixtures/external_sourcemap.js']
         }
+      },
+      relative_path: {
+        options: {}
+        cwd: 'test/fixtures'
+        src: 'nested/external_sourcemap.js'
+        dest: 'test/expected/relative_path'
       }
     },
 
@@ -71,7 +83,7 @@ module.exports = (grunt) ->
 
   # Whenever the "test" task is run, first clean the "tmp" dir, then run this
   # plugin's task(s), then test the result.
-  grunt.registerTask 'test', ['clean', 'shell:browserify', 'external_sourcemap', 'nodeunit']
+  grunt.registerTask 'test', ['clean', 'shell:browserify', 'shell:mkdirNested', 'shell:copyJsToNested', 'external_sourcemap', 'nodeunit']
 
   # By default, lint and run all tests.
   grunt.registerTask 'default', ['test']

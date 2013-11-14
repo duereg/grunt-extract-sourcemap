@@ -37,5 +37,14 @@ exports.external_sourcemap = {
     test.ok(map.sourcesContent === undefined, "sourcesContent was not removed")
 
     test.done();
-  }
+  },
+  relative_path: function(test) {
+    test.expect(3);
+
+    test.ok(grunt.file.exists('test/fixtures/nested/external_sourcemap.js'), "test .js file has not been generated");
+    test.ok(grunt.file.exists('test/expected/relative_path/nested/external_sourcemap.js'), "generated source map js is not present");
+    test.ok(grunt.file.exists('test/expected/relative_path/nested/external_sourcemap.js.map'), "generated source map is not present");
+
+    test.done();
+  },
 };

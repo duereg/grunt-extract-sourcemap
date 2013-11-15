@@ -1,7 +1,7 @@
 {
   "name": "grunt-external-sourcemap",
   "description": "Strips sourcemaps from a js file and links the original file to a newly created external source map",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": {
     "name": "Matt Blair",
     "email": "matt@goodeggs.com"
@@ -27,8 +27,8 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "coffee-script": "*",
-    "lazy.js": "*"
+    "coffee-script": "~1.6.3",
+    "lazy.js": "~0.2.0"
   },
   "devDependencies": {
     "browserify":"~2.35.1",

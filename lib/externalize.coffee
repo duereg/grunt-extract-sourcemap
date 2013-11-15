@@ -35,5 +35,5 @@ module.exports = ({filepath, source, grunt, dest, options, relativeDirectory}) -
   grunt.file.write sourceOutput, source
   grunt.file.write mapOutput, data
 
-  grunt.log.writeln "re-wrote data-url sourcemap in #{relativeSourceFilepath} to #{sourceOutput} and #{mapOutput}"
+  grunt.log.writeln "rewrote data-url sourcemap in #{relativeSourceFilepath} to #{sourceOutput} and #{mapOutput}"
   true

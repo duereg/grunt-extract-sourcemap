@@ -18,7 +18,7 @@ module.exports = ({filepath, source, grunt, dest, options, relativeDirectory}) -
   sourceOutput = path.join(dest, relativeDirectory, sourceFilename)
   mapOutput = path.join(dest, relativeDirectory, mapFilename)
 
-  match = source.match /\/\/@ sourceMappingURL=data:application\/json;base64,(.*)\n/
+  match = source.match /\/\/(@|#) sourceMappingURL=data:application\/json;base64,(.*)\n/
   grunt.log.writeln "No sourcemap found for #{relativeSourceFilepath}" unless match?
   return false unless match?
 
@@ -30,7 +30,7 @@ module.exports = ({filepath, source, grunt, dest, options, relativeDirectory}) -
   delete data.sourcesContent if options?.removeSourcesContent
   data = JSON.stringify data, null, 4
 
-  source = source.replace /\/\/@ sourceMappingURL=data:application\/json;base64,(.*)\n/, "//@ sourceMappingURL=#{mapFilename}\n"
+  source = source.replace /\/\/(@|#) sourceMappingURL=data:application\/json;base64,(.*)\n/, "//# sourceMappingURL=#{mapFilename}\n"
 
   grunt.file.write sourceOutput, source
   grunt.file.write mapOutput, data

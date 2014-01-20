@@ -1,6 +1,7 @@
 # grunt-extract-sourcemap
 
 > Extracts sourcemaps from a js file and links the original file to an external source map file
+
 > Formerly known as grunt-external-sourcemap
 
 ## Getting Started

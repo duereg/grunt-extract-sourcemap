@@ -13,7 +13,7 @@ module.exports = (grunt) ->
 
     # Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['test/fixtures/*', 'test/expected/*'],
+      tests: ['test/fixtures', 'test/expected'],
     },
 
     #run
@@ -33,6 +33,12 @@ module.exports = (grunt) ->
           '-d'
           '-o test/fixtures/external_sourcemap.js'
         ].join ' '
+
+      mkdirFixtures:
+        command: 'mkdir test/fixtures'
+
+      mkdirExpected:
+        command: 'mkdir test/expected'
 
       mkdirNested:
         command: 'mkdir test/fixtures/nested'
@@ -83,7 +89,16 @@ module.exports = (grunt) ->
 
   # Whenever the "test" task is run, first clean the "tmp" dir, then run this
   # plugin's task(s), then test the result.
-  grunt.registerTask 'test', ['clean', 'shell:browserify', 'shell:mkdirNested', 'shell:copyJsToNested', 'external_sourcemap', 'nodeunit']
+  grunt.registerTask 'test', [
+    'clean'
+    'shell:mkdirFixtures'
+    'shell:mkdirExpected'
+    'shell:browserify'
+    'shell:mkdirNested'
+    'shell:copyJsToNested'
+    'external_sourcemap'
+    'nodeunit'
+  ]
 
   # By default, lint and run all tests.
   grunt.registerTask 'default', ['test']

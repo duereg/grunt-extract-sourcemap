@@ -1,6 +1,8 @@
 # Gratefully stolen from https://gist.github.com/pmuellr/5143384
 path = require "path"
 
+sourceMapCommentRegEx =  /\/\/[@#] sourceMappingURL=data:application\/json;base64,(.*)\n/
+
 translateSources = (sources, grunt) ->
   newSources = []
 
@@ -18,7 +20,7 @@ module.exports = ({filepath, source, grunt, dest, options, relativeDirectory}) -
   sourceOutput = path.join(dest, relativeDirectory, sourceFilename)
   mapOutput = path.join(dest, relativeDirectory, mapFilename)
 
-  match = source.match /\/\/(@|#) sourceMappingURL=data:application\/json;base64,(.*)\n/
+  match = source.match sourceMapCommentRegEx
   grunt.log.writeln "No sourcemap found for #{relativeSourceFilepath}" unless match?
   return false unless match?
 
@@ -30,7 +32,7 @@ module.exports = ({filepath, source, grunt, dest, options, relativeDirectory}) -
   delete data.sourcesContent if options?.removeSourcesContent
   data = JSON.stringify data, null, 4
 
-  source = source.replace /\/\/(@|#) sourceMappingURL=data:application\/json;base64,(.*)\n/, "//# sourceMappingURL=#{mapFilename}\n"
+  source = source.replace sourceMapCommentRegEx, "//# sourceMappingURL=#{mapFilename}\n"
 
   grunt.file.write sourceOutput, source
   grunt.file.write mapOutput, data

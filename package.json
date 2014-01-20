@@ -1,19 +1,19 @@
 {
-  "name": "grunt-external-sourcemap",
+  "name": "grunt-extract-sourcemap",
   "description": "Strips sourcemaps from a js file and links the original file to a newly created external source map",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "author": "Matt Blair <matt@mattblair.co> (http://mattblair.co)",
   "repository": {
     "type": "git",
-    "url": "git://github.com/goodeggs/grunt-external-sourcemap.git"
+    "url": "git://github.com/duereg/grunt-extract-sourcemap.git"
   },
   "bugs": {
-    "url": "https://github.com/goodeggs/grunt-external-sourcemap/issues"
+    "url": "https://github.com/duereg/grunt-extract-sourcemap/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/goodeggs/grunt-external-sourcemap/blob/master/LICENSE-MIT"
+      "url": "https://github.com/duereg/grunt-extract-sourcemap/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",

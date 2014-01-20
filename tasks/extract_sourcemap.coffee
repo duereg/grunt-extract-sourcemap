@@ -1,9 +1,9 @@
- # grunt-external-sourcemap
- # https:#github.com/goodeggs/grunt-external-sourcemap
+ # grunt-extract-sourcemap
+ # https:#github.com/goodeggs/grunt-extract-sourcemap
  #
  # Copyright (c) 2013 Matt Blair
  # Licensed under the MIT license.
-externalize = require '../lib/externalize'
+extract = require '../lib/extractor'
 Lazy = require 'lazy.js/lazy'
 path = require "path"
 
@@ -26,7 +26,7 @@ getRelativeDirectory = (target, cwd, filepath) ->
   relativeDirectory
 
 module.exports = (grunt) ->
-  grunt.registerMultiTask 'external_sourcemap', 'Strips sourcemaps from a js file and links the original file to a newly created external source map', ->
+  grunt.registerMultiTask 'extract_sourcemap', 'Strips sourcemaps from a js file and links the original file to a newly created external source map', ->
     cwd = grunt.config('cwd') or ''
     options = @options()
     sources = []
@@ -50,4 +50,4 @@ module.exports = (grunt) ->
 
         sources = sources.concat(convertedArray)
 
-    externalize sourceConfig for sourceConfig in sources
+    extract sourceConfig for sourceConfig in sources

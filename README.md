@@ -19,14 +19,14 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-extract-sourcemap');
 ```
 
-## The "external_sourcemap" task
+## The "extract-sourcemap" task
 
 ### Overview
-In your project's Gruntfile, add a section named `external_sourcemap` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `extract-sourcemap` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  external_sourcemap: {
+  extract-sourcemap: {
     your_target: {
       // Target-specific file lists and/or options go here.
     },
@@ -41,7 +41,7 @@ Given a set of files with inline source maps, the source maps are extracted into
 
 ```js
 grunt.initConfig({
-  external_sourcemap: {
+  extract-sourcemap: {
     files: {
       'public/build': ['src/build/output1.js', 'src/build/output2.js'],
     },
@@ -54,7 +54,7 @@ You set a flag, `removeSourcesContent`, which will remove the sourcesContent fie
 
 ```js
 grunt.initConfig({
-  external_sourcemap: {
+  extract-sourcemap: {
     options: { 'removeSourcesContent': true }
     files: {
       'public/build': ['src/build/output1.js', 'src/build/output2.js'],

@@ -1,7 +1,7 @@
 {
   "name": "grunt-extract-sourcemap",
   "description": "Strips sourcemaps from a js file and links the original file to a newly created external source map",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "author": "Matt Blair <matt@mattblair.co> (http://mattblair.co)",
   "repository": {
     "type": "git",
@@ -24,16 +24,16 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "coffee-script": "~1.6.3",
-    "lazy.js": "~0.2.0"
+    "coffee-script": "~1.7.1",
+    "lazy.js": "~0.3.2"
   },
   "devDependencies": {
-    "browserify":"~2.35.1",
-    "coffeeify": "~0.5.2",
-    "grunt": "~0.4.1",
+    "browserify":"2.35.1",
+    "coffeeify": "~0.6.0",
+    "grunt": "~0.4.5",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt-shell": "~0.5.0"
+    "grunt-contrib-nodeunit": "~0.4.0",
+    "grunt-shell": "~0.7.0"
   },
   "contributors": [
     "Andrew Davey <andrew@equin.co.uk> (http://aboutcode.net/)"

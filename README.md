@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/duereg/grunt-extract-sourcemap.png)](https://travis-ci.org/duereg/grunt-extract-sourcemap)
+[![Dependencies](https://david-dm.org/duereg/grunt-extract-sourcemap.png)](https://david-dm.org/duereg/grunt-extract-sourcemap)
+[![devDependencies](https://david-dm.org/duereg/grunt-extract-sourcemap/dev-status.png)](https://david-dm.org/duereg/grunt-extract-sourcemap#info=devDependencies&view=table)
+[![NPM version](https://badge.fury.io/js/grunt-extract-sourcemap.svg)](http://badge.fury.io/js/grunt-extract-sourcemap)
+
 # grunt-extract-sourcemap
 
 > Extracts sourcemaps from a js file and links the original file to an external source map file

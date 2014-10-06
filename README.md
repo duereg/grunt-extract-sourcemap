@@ -27,11 +27,11 @@ grunt.loadNpmTasks('grunt-extract-sourcemap');
 ## The "extract-sourcemap" task
 
 ### Overview
-In your project's Gruntfile, add a section named `extract-sourcemap` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `extract_sourcemap` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  extract-sourcemap: {
+  extract_sourcemap: {
     your_target: {
       // Target-specific file lists and/or options go here.
     },
@@ -46,7 +46,7 @@ Given a set of files with inline source maps, the source maps are extracted into
 
 ```js
 grunt.initConfig({
-  extract-sourcemap: {
+  extract_sourcemap: {
     files: {
       'public/build': ['src/build/output1.js', 'src/build/output2.js'],
     },

@@ -59,7 +59,7 @@ You set a flag, `removeSourcesContent`, which will remove the sourcesContent fie
 
 ```js
 grunt.initConfig({
-  extract-sourcemap: {
+  extract_sourcemap: {
     options: { 'removeSourcesContent': true }
     files: {
       'public/build': ['src/build/output1.js', 'src/build/output2.js'],

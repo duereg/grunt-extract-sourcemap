@@ -1,8 +1,7 @@
 # /*
 #  * grunt-extract-sourcemap
-#  * https://github.com/goodeggs/grunt-extract-sourcemap
+#  * https://github.com/duereg/grunt-extract-sourcemap
 #  *
-#  * Copyright (c) 2013 Good Eggs
 #  * Licensed under the MIT license.
 #  */
 
@@ -26,12 +25,12 @@ module.exports = (grunt) ->
 
       browserify:
         command: [
-          'browserify'
+          './node_modules/.bin/browserify'
           'tasks/extract_sourcemap.coffee'
           '-t coffeeify'
           '--extension=.coffee'
           '-d'
-          '-o test/fixtures/extract_sourcemap.js'
+          '-o ./test/fixtures/extract_sourcemap.js'
         ].join ' '
 
       mkdirFixtures:

@@ -1,7 +1,7 @@
 # Gratefully stolen from https://gist.github.com/pmuellr/5143384
 path = require "path"
 
-sourceMapCommentRegEx =  /\/\/[@#] sourceMappingURL=data:application\/json;(?:charset:[^;]+)?;base64,(.*)\n/
+sourceMapCommentRegEx =  /\/\/[@#] sourceMappingURL=data:application\/json(?:;charset:[^;]+)?;base64,(.*)\n/
 
 translateSources = (sources, grunt) ->
   newSources = []
